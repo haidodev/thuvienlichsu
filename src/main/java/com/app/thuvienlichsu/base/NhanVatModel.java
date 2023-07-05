@@ -97,7 +97,20 @@ public class NhanVatModel extends Model
 
         return htmlBuilder.toString();
     }
-    public GridPane getAnotherInfoTable(){
+    public TextFlow getDescription()
+    {
+        if (this.moTa == null) return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String item : moTa) {
+            stringBuilder.append(item).append(" ");
+        }
+        String description = stringBuilder.toString().trim();
+        TextFlow textFlow = new TextFlow(new Text(description));
+        textFlow.setMaxWidth(460);
+        textFlow.setPadding(new Insets(0, 0, 0, 10));
+        return textFlow;
+    }
+    public GridPane getInfoTable(){
         if (this.thongTin == null) return null;
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));
