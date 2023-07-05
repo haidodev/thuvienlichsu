@@ -33,11 +33,11 @@ public class ThoiKyController extends GeneralController implements Initializable
     }
     @FXML
     public void showThoiKyDetail() {
-        ThoiKyModel item = (ThoiKyModel) showDetail((ArrayList<Model>) database.getThoiKy());
+        ThoiKyModel item = (ThoiKyModel) getModelFromDatabase((ArrayList<Model>) database.getThoiKy());
         showDanhSachLienQuan(item);
     }
     public void showThoiKyDetail(String thoiKyName) {
-        ThoiKyModel item = (ThoiKyModel) showDetail((ArrayList<Model>) database.getThoiKy(), thoiKyName);
+        ThoiKyModel item = (ThoiKyModel) getModelFromDatabase((ArrayList<Model>) database.getThoiKy(), thoiKyName);
         showDanhSachLienQuan(item);
     }
     private void showDanhSachLienQuan(ThoiKyModel thoiKy){

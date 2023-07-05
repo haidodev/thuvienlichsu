@@ -97,6 +97,7 @@ public class NhanVatModel extends Model
 
         return htmlBuilder.toString();
     }
+    
     public GridPane getAnotherInfoTable(){
         if (this.thongTin == null) return null;
         GridPane gridPane = new GridPane();
@@ -122,7 +123,6 @@ public class NhanVatModel extends Model
             Label fieldName = null, sourceNKS = null, sourceWiki = null;
             if (row.size() >= 1) {
                 fieldName = createWrappedLabel(row.get(0));
-                fieldName.setStyle("-fx-font-weight: bold;");
             }
             if (row.size() >= 2)
                 sourceNKS = createWrappedLabel(row.get(1));
@@ -133,10 +133,6 @@ public class NhanVatModel extends Model
             if (fieldName != null) gridPane.add(fieldName, 0, rowCnt);
             if (sourceNKS != null) gridPane.add(sourceNKS, 1, rowCnt);
             if (sourceWiki != null) gridPane.add(sourceWiki, 2, rowCnt);
-            System.out.println(row);
-            System.out.println(fieldName);
-            System.out.println(sourceNKS);
-            System.out.println(sourceWiki);
             rowCnt += 1;
         }
         return gridPane;

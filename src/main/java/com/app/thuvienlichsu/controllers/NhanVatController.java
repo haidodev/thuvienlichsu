@@ -1,12 +1,10 @@
 package com.app.thuvienlichsu.controllers;
 
-import com.app.thuvienlichsu.base.InfoLine;
 import com.app.thuvienlichsu.base.Model;
 import com.app.thuvienlichsu.base.NhanVatModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -43,7 +41,7 @@ public class NhanVatController extends GeneralController implements Initializabl
     @FXML
     public void showNhanVatDetail() {
         tableContent.getChildren().clear();
-        NhanVatModel nhanVat = (NhanVatModel) showDetail((ArrayList<Model>) database.getNhanVat());
+        NhanVatModel nhanVat = (NhanVatModel) getModelFromDatabase((ArrayList<Model>) database.getNhanVat());
         GridPane infoTable = nhanVat.getAnotherInfoTable();
         if (infoTable != null) {
             tableContent.getChildren().add(infoTable);
@@ -52,7 +50,7 @@ public class NhanVatController extends GeneralController implements Initializabl
     }
     public void showNhanVatDetail(String nhanVatName) {
         tableContent.getChildren().clear();
-        NhanVatModel nhanVat = (NhanVatModel) showDetail((ArrayList<Model>) database.getNhanVat(), nhanVatName);
+        NhanVatModel nhanVat = (NhanVatModel) getModelFromDatabase((ArrayList<Model>) database.getNhanVat(), nhanVatName);
         GridPane infoTable = nhanVat.getAnotherInfoTable();
         if (infoTable != null) tableContent.getChildren().add(infoTable);
         showDanhSachLienQuan(nhanVat);

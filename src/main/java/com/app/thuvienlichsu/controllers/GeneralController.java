@@ -51,16 +51,16 @@ public class GeneralController implements Initializable {
         updateWordInListView(word, index, resource, searchTemp);
         setListViewItem(resource);
     }
-    public Model showDetail(ArrayList<Model> resource) {
-        return showDetail(resource, listView.getSelectionModel().getSelectedItem());
+    public Model getModelFromDatabase(ArrayList<Model> resource) {
+        return getModelFromDatabase(resource, listView.getSelectionModel().getSelectedItem());
     }
-    public Model showDetail(ArrayList<Model> resource, String spelling) {
+    public Model getModelFromDatabase(ArrayList<Model> resource, String spelling) {
         if (spelling == null) {
             return null;
         }
         int index = Collections.binarySearch(resource, new Model(spelling, ""));
         String meaning = resource.get(index).getHTML();
-        definitionView.getEngine().loadContent(meaning, "text/html");
+//        definitionView.getEngine().loadContent(meaning, "text/html");
         return resource.get(index);
     }
     public Model getModel(ArrayList<Model> resource, String spelling){

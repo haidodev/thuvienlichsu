@@ -33,11 +33,11 @@ public class DiTichController extends GeneralController implements Initializable
     }
     @FXML
     public void showDiTichDetail() {
-        DiTichModel item = (DiTichModel) showDetail((ArrayList<Model>) database.getDiTich());
+        DiTichModel item = (DiTichModel) getModelFromDatabase((ArrayList<Model>) database.getDiTich());
         showDanhSachLienQuan(item);
     }
     public void showDiTichDetail(String diTichName) {
-        DiTichModel item = (DiTichModel) showDetail((ArrayList<Model>) database.getDiTich(), diTichName);
+        DiTichModel item = (DiTichModel) getModelFromDatabase((ArrayList<Model>) database.getDiTich(), diTichName);
         showDanhSachLienQuan(item);
     }
     @FXML

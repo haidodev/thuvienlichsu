@@ -29,11 +29,11 @@ public class SuKienController extends GeneralController implements Initializable
     }
     @FXML
     public void showSuKienDetail() {
-        SuKienModel item = (SuKienModel) showDetail((ArrayList<Model>) database.getSuKien());
+        SuKienModel item = (SuKienModel) getModelFromDatabase((ArrayList<Model>) database.getSuKien());
         showDanhSachLienQuan(item);
     }
     public void showSuKienDetail(String suKienName) {
-        SuKienModel item = (SuKienModel) showDetail((ArrayList<Model>) database.getSuKien(), suKienName);
+        SuKienModel item = (SuKienModel) getModelFromDatabase((ArrayList<Model>) database.getSuKien(), suKienName);
         showDanhSachLienQuan(item);
     }
     @FXML

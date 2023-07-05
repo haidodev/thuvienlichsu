@@ -26,11 +26,11 @@ public class LeHoiController extends GeneralController implements Initializable 
     }
     @FXML
     public void showLeHoiDetail() {
-        LeHoiModel item = (LeHoiModel) showDetail((ArrayList<Model>) database.getLeHoi());
+        LeHoiModel item = (LeHoiModel) getModelFromDatabase((ArrayList<Model>) database.getLeHoi());
         showDanhSachLienQuan(item);
     }
     public void showLeHoiDetail(String leHoiName) {
-        LeHoiModel item = (LeHoiModel) showDetail((ArrayList<Model>) database.getLeHoi(), leHoiName);
+        LeHoiModel item = (LeHoiModel) getModelFromDatabase((ArrayList<Model>) database.getLeHoi(), leHoiName);
         showDanhSachLienQuan(item);
     }
     @FXML
