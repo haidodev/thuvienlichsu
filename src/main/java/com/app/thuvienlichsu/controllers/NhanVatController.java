@@ -4,9 +4,12 @@ import com.app.thuvienlichsu.base.Model;
 import com.app.thuvienlichsu.base.NhanVatModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,20 +43,30 @@ public class NhanVatController extends GeneralController implements Initializabl
     }
     @FXML
     public void showNhanVatDetail() {
-        tableContent.getChildren().clear();
         NhanVatModel nhanVat = (NhanVatModel) getModelFromDatabase((ArrayList<Model>) database.getNhanVat());
-        GridPane infoTable = nhanVat.getAnotherInfoTable();
-        if (infoTable != null) {
-            tableContent.getChildren().add(infoTable);
-        }
+        showNhanVatInformation(nhanVat);
         showDanhSachLienQuan(nhanVat);
     }
     public void showNhanVatDetail(String nhanVatName) {
-        tableContent.getChildren().clear();
         NhanVatModel nhanVat = (NhanVatModel) getModelFromDatabase((ArrayList<Model>) database.getNhanVat(), nhanVatName);
-        GridPane infoTable = nhanVat.getAnotherInfoTable();
-        if (infoTable != null) tableContent.getChildren().add(infoTable);
+        showNhanVatInformation(nhanVat);
         showDanhSachLienQuan(nhanVat);
+    }
+    private void showNhanVatInformation(NhanVatModel nhanVat){
+        tableContent.getChildren().clear();
+        Label label = new Label(nhanVat.getTenModel());
+        label.setPadding(new Insets(0, 0, 0, 10));
+        label.setFont(new Font(20));
+        tableContent.getChildren().add(label);
+        GridPane infoTable = nhanVat.getInfoTable();
+        if (infoTable != null) {
+            tableContent.getChildren().add(infoTable);
+        }
+
+        TextFlow description = nhanVat.getDescription();
+        if (description != null)
+            tableContent.getChildren().add(description);
+
     }
     private void showDanhSachLienQuan(NhanVatModel nhanVat){
         resetDanhSachLienQuan();

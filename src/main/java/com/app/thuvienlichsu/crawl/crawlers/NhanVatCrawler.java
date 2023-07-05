@@ -45,7 +45,9 @@ public class NhanVatCrawler extends SCrawler implements ICrawler {
                     }
                 } else {
                     Elements tdElements = tabElements.select("tr td");
-                    if (tdElements.size() > 0) info.add(tdElements.text());
+                    if (tdElements.size() > 0) {
+                        info.add(tdElements.text());
+                    }
                 }
             } else {
                 Elements brElements = row.select("td br");
@@ -58,7 +60,16 @@ public class NhanVatCrawler extends SCrawler implements ICrawler {
                     } 
                 } else {
                     Element tdElement = row.selectFirst("td");
-                    if (tdElement != null) info.add(tdElement.text());
+                    if (tdElement != null) {
+                        Elements liElements = tdElement.select("li");
+                        if (liElements.size() > 0) {
+                            for (Element liElement : liElements) {
+                                info.add(liElement.text());
+                            }
+                        } else {
+                            info.add(tdElement.text());
+                        }
+                    }
                 }
             }
 

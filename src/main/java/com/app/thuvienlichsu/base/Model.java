@@ -3,6 +3,9 @@ package com.app.thuvienlichsu.base;
 import com.app.thuvienlichsu.util.Config;
 import com.app.thuvienlichsu.util.Encode;
 import com.app.thuvienlichsu.util.StringUtility;
+import javafx.geometry.Insets;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +77,23 @@ public class Model implements Comparable<Model>
             moTa.add(Config.nullRepresentation);
         }
         this.moTa = moTa;
+    }
+    public List<String> getMoTa(){
+        return moTa;
+    }
+    public TextFlow getDescription()
+    {
+        if (this.moTa == null) return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String item : moTa) {
+            stringBuilder.append(item).append("\n");
+        }
+        String description = stringBuilder.toString().trim();
+        TextFlow textFlow = new TextFlow(new Text(description));
+        textFlow.setMaxWidth(460);
+        textFlow.setLineSpacing(2.0);
+        textFlow.setPadding(new Insets(0, 0, 0, 10));
+        return textFlow;
     }
     public int compareTo(Model o) {
 

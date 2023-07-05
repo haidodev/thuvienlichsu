@@ -159,7 +159,4 @@ public class GeneralController implements Initializable {
         }
         return allBtns;
     }
-    protected static void reloadData(){
-        database = new LoadData();
-    }
 }

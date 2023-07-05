@@ -97,8 +97,9 @@ public class NhanVatModel extends Model
 
         return htmlBuilder.toString();
     }
-    
-    public GridPane getAnotherInfoTable(){
+
+    public GridPane getInfoTable(){
+
         if (this.thongTin == null) return null;
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));

@@ -21,7 +21,6 @@ public class ThoiKyController extends GeneralController implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        reloadData();
         for (Model temp : database.getThoiKy()) {
             objectList.add(temp.getTenModel());
         }
@@ -41,12 +40,6 @@ public class ThoiKyController extends GeneralController implements Initializable
         showDanhSachLienQuan(item);
     }
     private void showDanhSachLienQuan(ThoiKyModel thoiKy){
-//        nhanVatLienQuanLabel.setVisible(false);
-//        diTichLienQuanLabel.setVisible(false);
-//
-//        cacNhanVatLienQuan.getChildren().clear();
-//        cacDiTichLienQuan.getChildren().clear();
-
         resetDanhSachLienQuan();
 
         if (thoiKy == null) return;
