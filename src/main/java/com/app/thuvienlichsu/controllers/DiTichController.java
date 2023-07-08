@@ -2,10 +2,15 @@ package com.app.thuvienlichsu.controllers;
 
 import com.app.thuvienlichsu.base.DiTichModel;
 import com.app.thuvienlichsu.base.Model;
+import com.app.thuvienlichsu.base.NhanVatModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +24,7 @@ public class DiTichController extends GeneralController implements Initializable
     public Label leHoiLienQuanLabel;
     public VBox cacThoiKyLienQuan;
     public VBox cacLeHoiLienQuan;
-
+    public VBox tableContent;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (Model temp : database.getDiTich()) {
@@ -34,11 +39,28 @@ public class DiTichController extends GeneralController implements Initializable
     @FXML
     public void showDiTichDetail() {
         DiTichModel item = (DiTichModel) getModelFromDatabase((ArrayList<Model>) database.getDiTich());
+        showDiTichInformation(item);
         showDanhSachLienQuan(item);
     }
     public void showDiTichDetail(String diTichName) {
         DiTichModel item = (DiTichModel) getModelFromDatabase((ArrayList<Model>) database.getDiTich(), diTichName);
+        showDiTichInformation(item);
         showDanhSachLienQuan(item);
+    }
+    private void showDiTichInformation(DiTichModel diTich){
+        tableContent.getChildren().clear();
+        Label label = new Label(diTich.getTenModel());
+        label.setPadding(new Insets(0, 0, 0, 10));
+        label.setFont(new Font(20));
+        tableContent.getChildren().add(label);
+        GridPane infoTable = diTich.getInfoTable();
+        if (infoTable != null) {
+            tableContent.getChildren().add(infoTable);
+        }
+
+        TextFlow description = diTich.getDescription();
+        if (description != null)
+            tableContent.getChildren().add(description);
     }
     @FXML
     public void diTichSearchFieldAction(){

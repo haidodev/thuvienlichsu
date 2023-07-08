@@ -60,7 +60,7 @@ public class GeneralController implements Initializable {
         }
         int index = Collections.binarySearch(resource, new Model(spelling, ""));
         String meaning = resource.get(index).getHTML();
-//        definitionView.getEngine().loadContent(meaning, "text/html");
+        definitionView.getEngine().loadContent(meaning, "text/html");
         return resource.get(index);
     }
     public Model getModel(ArrayList<Model> resource, String spelling){
