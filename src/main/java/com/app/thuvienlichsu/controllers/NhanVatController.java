@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class NhanVatController extends GeneralController implements Initializable {
-    public VBox cacNhanVatLienQuan;
-    public VBox cacDiTichLienQuan;
-    public VBox cacThoiKyLienQuan;
+    public FlowPane cacNhanVatLienQuan;
+    public FlowPane cacDiTichLienQuan;
+    public FlowPane cacThoiKyLienQuan;
     public Label diTichLienQuanLabel;
     public Label nhanVatLienQuanLabel;
     public Label thoiKyLienQuanLabel;

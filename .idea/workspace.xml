@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5495f9b4-d542-479d-821c-89fc7295bfa4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/SuKienModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/SuKienModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/GeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/GeneralController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/DiTichController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/DiTichController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/NhanVatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/NhanVatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/SuKienController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/SuKienController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/ThoiKyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/ThoiKyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/thoi-ky.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/thoi-ky.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/di-tich.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/di-tich.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/nhan-vat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/nhan-vat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/su-kien.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/su-kien.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.web.WebView?>
+<?import javafx.scene.layout.FlowPane?>
 <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="second-color" stylesheets="@style/search.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.thuvienlichsu.controllers.DiTichController">
     <AnchorPane layoutY="-3.0" prefHeight="459.0" prefWidth="257.0" styleClass="second-color" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-3.0">
         <TextField fx:id="searchField" layoutX="19.0" layoutY="18.0" onKeyReleased="#diTichSearchFieldAction" prefHeight="35.0" prefWidth="219.0" promptText="Tra từ" />
@@ -43,11 +44,11 @@
                     <Font name="System Bold" size="15.0" />
                 </font>
             </Label>
-                <VBox fx:id="cacNhanVatLienQuan" spacing="10.0">
-                    <padding>
-                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
-                    </padding>
-                </VBox>
+            <FlowPane fx:id="cacNhanVatLienQuan">
+                <padding>
+                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                </padding>
+            </FlowPane>
             <Label fx:id="thoiKyLienQuanLabel" text="Thời kỳ liên quan" visible="false">
                 <padding>
                     <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
@@ -56,11 +57,11 @@
                     <Font name="System Bold" size="15.0" />
                 </font>
             </Label>
-            <VBox fx:id="cacThoiKyLienQuan" spacing="10.0">
+            <FlowPane fx:id="cacThoiKyLienQuan">
                 <padding>
                     <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                 </padding>
-            </VBox>
+            </FlowPane>
             <Label fx:id="leHoiLienQuanLabel" text="Lễ hội liên quan" visible="false">
                 <padding>
                     <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
@@ -69,11 +70,11 @@
                     <Font name="System Bold" size="15.0" />
                 </font>
             </Label>
-            <VBox fx:id="cacLeHoiLienQuan" spacing="10.0">
+            <FlowPane fx:id="cacLeHoiLienQuan">
                 <padding>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                 </padding>
-            </VBox>
+            </FlowPane>
         </VBox>
     </ScrollPane>
 </AnchorPane>

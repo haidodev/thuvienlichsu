@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -18,12 +19,12 @@ import java.util.ResourceBundle;
 
 
 public class DiTichController extends GeneralController implements Initializable {
-    public VBox cacNhanVatLienQuan;
+    public FlowPane cacNhanVatLienQuan;
     public Label nhanVatLienQuanLabel;
     public Label thoiKyLienQuanLabel;
     public Label leHoiLienQuanLabel;
-    public VBox cacThoiKyLienQuan;
-    public VBox cacLeHoiLienQuan;
+    public FlowPane cacThoiKyLienQuan;
+    public FlowPane cacLeHoiLienQuan;
     public VBox tableContent;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
