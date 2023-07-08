@@ -53,11 +53,6 @@ public class ThoiKyController extends GeneralController implements Initializable
         label.setPadding(new Insets(0, 0, 10, 10));
         label.setFont(new Font(20));
         tableContent.getChildren().add(label);
-        GridPane infoTable = thoiKy.getInfoTable();
-        if (infoTable != null) {
-            tableContent.getChildren().add(infoTable);
-        }
-
         TextFlow description = thoiKy.getDescription();
         if (description != null)
             tableContent.getChildren().add(description);

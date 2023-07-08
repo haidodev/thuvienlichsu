@@ -1,21 +1,27 @@
 package com.app.thuvienlichsu.controllers;
 
 import com.app.thuvienlichsu.crawl.CrawlAll;
+
 import javafx.concurrent.Task;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
+
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import java.net.InetAddress;
 import java.net.URL;
+
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class MainController implements Initializable {
     private static MainController instance;
@@ -41,9 +47,6 @@ public class MainController implements Initializable {
     @FXML
     private Button leHoiBtn;
     @FXML
-    private Button crawlingBtn;
-
-    @FXML
     private AnchorPane thoiKyPane;
     @FXML
     private AnchorPane nhanVatPane;
@@ -64,9 +67,72 @@ public class MainController implements Initializable {
     @FXML
     private LeHoiController leHoiController;
     @FXML
-    public ProgressIndicator loadingCircle;
+    private void showSplashScreenAndRunMethod() {
+        primaryStage.setScene(splashScene);
+        primaryStage.show();
+        boolean isConnected = isInternetAvailable();
+        if (!isConnected) {
+            primaryStage.setScene(dictMainScene);
+            primaryStage.show();
+            showInternetErrorMessage();
+            return;
 
+        }
+        Task<Void> crawlTask = new Task<>() {
+            @Override
+            protected Void call() {
+                CrawlAll crawlAll = new CrawlAll();
+                boolean crawlSuccess = false;
+                boolean linkSuccess = false;
 
+                try {
+                    crawlAll.crawl();
+                    crawlSuccess = true;
+                    crawlAll.link();
+                    linkSuccess = true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (crawlSuccess && linkSuccess) {
+                    crawlAll.overwriteDatabase();
+                }
+
+                return null;
+            }
+        };
+
+        crawlTask.setOnSucceeded(e -> {
+            primaryStage.setScene(dictMainScene);
+            loadPanes();
+            primaryStage.show();
+            showRelaunchMessage();
+        });
+
+        primaryStage.setOnCloseRequest(event -> {
+            if (crawlTask.isRunning()) {
+                crawlTask.cancel();
+            }
+        });
+
+        // Run the task in a separate thread
+
+        Thread crawlThread = new Thread(crawlTask);
+        crawlThread.start();
+    }
+    public void setScenes(Stage primaryStage, Scene scene, Scene splashScene) {
+        this.primaryStage = primaryStage;
+        this.dictMainScene = scene;
+        this.splashScene = splashScene;
+    }
+    private static boolean isInternetAvailable() {
+        try {
+            InetAddress address = InetAddress.getByName("nguoikesu.com");
+            return address.isReachable(5000); // Timeout in milliseconds
+        } catch (IOException e) {
+            return false;
+        }
+    }
     private void setMainContent(AnchorPane anchorPane) {
         mainContent.getChildren().setAll(anchorPane);
     }
@@ -166,76 +232,12 @@ public class MainController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadPanes();
-        thoiKyBtn.getStyleClass().add("active");
-        setMainContent(thoiKyPane);
-    }
-
-    public void setScenes(Stage primaryStage, Scene scene, Scene splashScene) {
-        this.primaryStage = primaryStage;
-        this.dictMainScene = scene;
-        this.splashScene = splashScene;
-    }
-
-    public void showSplashScreenAndRunMethod() {
-        primaryStage.setScene(splashScene);
-        primaryStage.show();
-        Task<Void> crawlTask = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                CrawlAll crawlAll = new CrawlAll();
-                boolean crawlSuccess = false;
-                boolean linkSuccess = false;
-                TimeUnit.SECONDS.sleep(3);
-
-//                try {
-//                    crawlAll.crawl();
-//                    crawlSuccess = true;
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//
-//                if (crawlSuccess) {
-//                    try {
-//                        crawlAll.link();
-//                        linkSuccess = true;
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                if (linkSuccess) {
-//                    try {
-//                        crawlAll.overwriteDatabase();
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-
-                return null;
-            }
-        };
-
-        crawlTask.setOnSucceeded(e -> {
-            primaryStage.setScene(dictMainScene);
-            loadPanes();
-            primaryStage.show();
-            showRelaunchMessage();
-        });
-
-        primaryStage.setOnCloseRequest(event -> {
-            // Terminate the crawling process if it's still running
-            if (crawlTask != null && crawlTask.isRunning()) {
-                crawlTask.cancel();
-            }
-        });
-
-        // Run the task in a separate thread
-
-        Thread crawlThread = new Thread(crawlTask);
-        crawlThread.start();
+    private void showInternetErrorMessage() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Internet error");
+        alert.setHeaderText(null);
+        alert.setContentText("Please check your Internet connection and retry!");
+        alert.showAndWait();
     }
     private void showRelaunchMessage() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -243,5 +245,11 @@ public class MainController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("The application has finished recrawling the data.\nPlease relaunch the application.");
         alert.showAndWait();
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadPanes();
+        thoiKyBtn.getStyleClass().add("active");
+        setMainContent(thoiKyPane);
     }
 }

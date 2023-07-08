@@ -2,11 +2,15 @@ package com.app.thuvienlichsu.controllers;
 
 import com.app.thuvienlichsu.base.LoadData;
 import com.app.thuvienlichsu.base.Model;
+
 import com.app.thuvienlichsu.util.StringUtility;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -24,13 +28,10 @@ public class GeneralController implements Initializable {
     @FXML
     protected TextField searchField;
     @FXML
-    private WebView definitionView;
     private final ArrayList<Model> searchTemp = new ArrayList<>();
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Initialize");
-    }
+    public void initialize(URL location, ResourceBundle resources) {}
     public void setListViewItem(ArrayList<Model> resource) {
         objectList.clear();
         if (searchField.getText().equals("")) {
@@ -58,17 +59,9 @@ public class GeneralController implements Initializable {
         if (spelling == null) {
             return null;
         }
-        int index = Collections.binarySearch(resource, new Model(spelling, ""));
-        String meaning = resource.get(index).getHTML();
-//        definitionView.getEngine().loadContent(meaning, "text/html");
+        int index = Collections.binarySearch(resource, new Model(spelling));
         return resource.get(index);
     }
-    public Model getModel(ArrayList<Model> resource, String spelling){
-        if (spelling == null) {
-            return null;
-        }
-        int index = Collections.binarySearch(resource, new Model(spelling, ""));
-        return resource.get(index);    }
     public void updateWordInListView(String word, int index, ArrayList<Model> res, ArrayList<Model> des) {
         if (index < 0) {
             return;
@@ -82,12 +75,12 @@ public class GeneralController implements Initializable {
             }
         }
         for (int i = j + 1; i <= index; i++) {
-            Model temp = new Model(res.get(i).getTenModel(), res.get(i).getHTML());
+            Model temp = new Model(res.get(i).getTenModel());
             des.add(temp);
         }
         for (int i = index + 1; i < res.size(); i++) {
             if (StringUtility.isContain(word, res.get(i).getTenModel()) == 0) {
-                Model temp = new Model(res.get(i).getTenModel(), res.get(i).getHTML());
+                Model temp = new Model(res.get(i).getTenModel());
                 des.add(temp);
             } else {
                 break;
@@ -100,7 +93,7 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, nvL.size() - 1, nhanVat, (ArrayList<Model>) nvL);
             if (idx < 0) continue;
             Button btn = new Button(nvL.get(idx).getTenModel());
-            btn.setPrefWidth(150); // Set button width
+            btn.setPrefWidth(140); // Set button width
             btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkNhanVatPane(((Button) event.getSource()).getText());
@@ -115,7 +108,7 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, tkL.size() - 1, thoiKy, (ArrayList<Model>) tkL);
             if (idx < 0) continue;
             Button btn = new Button(tkL.get(idx).getTenModel());
-            btn.setPrefWidth(150); // Set button width
+            btn.setPrefWidth(140); // Set button width
             btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkThoiKyPane(((Button) event.getSource()).getText());
@@ -130,7 +123,7 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, skL.size() - 1, suKien, (ArrayList<Model>) skL);
             if (idx < 0) continue;
             Button btn = new Button(skL.get(idx).getTenModel());
-            btn.setPrefWidth(150); // Set button width
+            btn.setPrefWidth(140); // Set button width
             btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkNhanVatPane(((Button) event.getSource()).getText());
@@ -145,7 +138,7 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, dtL.size() - 1, diTich, (ArrayList<Model>) dtL);
             if (idx < 0) continue;
             Button btn = new Button(dtL.get(idx).getTenModel());
-            btn.setPrefWidth(150); // Set button width
+            btn.setPrefWidth(140); // Set button width
             btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkDiTichPane(((Button) event.getSource()).getText());
@@ -160,7 +153,7 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, lhL.size() - 1, leHoi, (ArrayList<Model>) lhL);
             if (idx < 0) continue;
             Button btn = new Button(lhL.get(idx).getTenModel());
-            btn.setPrefWidth(150); // Set button width
+            btn.setPrefWidth(140); // Set button width
             btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkLeHoiPane(((Button) event.getSource()).getText());

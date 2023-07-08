@@ -2,14 +2,11 @@ package com.app.thuvienlichsu.controllers;
 
 import com.app.thuvienlichsu.base.LeHoiModel;
 import com.app.thuvienlichsu.base.Model;
-import com.app.thuvienlichsu.base.NhanVatModel;
+import com.app.thuvienlichsu.util.JavaFXGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.text.TextFlow;
 
 import java.net.URL;
@@ -44,10 +41,7 @@ public class LeHoiController extends GeneralController implements Initializable 
     }
     private void showLeHoiInformation(LeHoiModel leHoi){
         tableContent.getChildren().clear();
-        Label label = new Label(leHoi.getTenModel());
-        label.setPadding(new Insets(0, 0, 0, 10));
-        label.setFont(new Font(20));
-        tableContent.getChildren().add(label);
+        tableContent.getChildren().add(JavaFXGenerator.createWrappedTitle(leHoi.getTenModel()));
         GridPane infoTable = leHoi.getInfoTable();
         if (infoTable != null) {
             tableContent.getChildren().add(infoTable);

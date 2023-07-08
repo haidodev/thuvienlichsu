@@ -8,5 +8,6 @@ module com.app.thuvienlichsu {
 
     opens com.app.thuvienlichsu.controllers to javafx.fxml;
     opens com.app.thuvienlichsu.base to com.google.gson, javafx.base;
+    opens com.app.thuvienlichsu.util to javafx.base;
     exports com.app.thuvienlichsu;
 }

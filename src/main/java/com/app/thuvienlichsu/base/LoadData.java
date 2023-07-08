@@ -50,7 +50,6 @@ public class LoadData
     {
         List<NhanVatModel> myList = loader(Config.NHAN_VAT_FILENAME,  new TypeToken<List<NhanVatModel>>() {});
         List<Model> newList = new ArrayList<>(myList);
-        for (Model model : newList) model.setHTML();
         Collections.sort(newList);
         return newList;
     }
@@ -58,7 +57,6 @@ public class LoadData
     {
         List<ThoiKyModel> myList = loader(Config.THOI_KY_FILENAME,  new TypeToken<List<ThoiKyModel>>() {});
         List<Model> newList = new ArrayList<>(myList);
-        for (Model model : newList) model.setHTML();
         Collections.sort(newList);
         return newList;
     }
@@ -66,7 +64,6 @@ public class LoadData
     {
         List<SuKienModel> myList = loader(Config.SU_KIEN_FILENAME,  new TypeToken<List<SuKienModel>>() {});
         List<Model> newList = new ArrayList<>(myList);
-        for (Model model : newList) model.setHTML();
         Collections.sort(newList);
         return newList;
     }
@@ -74,7 +71,6 @@ public class LoadData
     {
         List<DiTichModel> myList = loader(Config.DI_TICH_FILENAME,  new TypeToken<List<DiTichModel>>() {});
         List<Model> newList = new ArrayList<>(myList);
-        for (Model model : newList) model.setHTML();
         Collections.sort(newList);
         return newList;
     }
@@ -83,7 +79,6 @@ public class LoadData
     {
         List<LeHoiModel> myList = loader(Config.LE_HOI_FILENAME,  new TypeToken<List<LeHoiModel>>() {});
         List<Model> newList = new ArrayList<>(myList);
-        for (Model model : newList) model.setHTML();
         Collections.sort(newList);
         return newList;
     }
@@ -152,13 +147,6 @@ public class LoadData
         }
     }
 
-    public static void main(String[] args) {
-        LoadData ld = new LoadData();
-
-        for (Model m : ld.getThoiKy()) {
-            System.out.println(m);
-        }
-    }
     public static int binaryLookupByCode(int start, int end, String dT, ArrayList<Model> allModels) {
         if (end < start) {
             return -1;

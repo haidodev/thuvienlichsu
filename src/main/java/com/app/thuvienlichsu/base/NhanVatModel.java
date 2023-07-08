@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.app.thuvienlichsu.util.JavaFXGenerator.createWrappedLabel;
+
 public class NhanVatModel extends Model
 {
     private List<List<String>> thongTin;
@@ -68,36 +70,6 @@ public class NhanVatModel extends Model
         this.cacThoiKyLienQuan = cacThoiKyLienQuan;
     }
 
-    @Override
-    public String toHTML() {
-        StringBuilder htmlBuilder = new StringBuilder();
-
-        // Start the HTML structure
-        htmlBuilder.append("<html>");
-        htmlBuilder.append("<i>").append(this.tenModel).append("</i>");
-        htmlBuilder.append("<head>");
-        htmlBuilder.append("</head>");
-        htmlBuilder.append("<body contenteditable=\"true\">");
-        htmlBuilder.append("<meta charset=\"UTF-8\">");
-        // htmlBuilder.append("<title>").append(getName()).append("</title>");
-        htmlBuilder.append("<style>");
-        htmlBuilder.append("body { font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:14px; }");
-        htmlBuilder.append("table { font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:14px; }");
-        htmlBuilder.append(".table-container { text-align: left; }");
-        htmlBuilder.append("</style>");
-
-        htmlBuilder.append("<h2>Description</h2>");
-        if (this.moTa != null) {
-            for (String desc : this.moTa) {
-                htmlBuilder.append("<p>").append(desc).append("</p>");
-            }
-        }
-        htmlBuilder.append("</body>");
-        htmlBuilder.append("</html>");
-
-        return htmlBuilder.toString();
-    }
-
     public GridPane getInfoTable(){
 
         if (this.thongTin == null) return null;
@@ -138,18 +110,5 @@ public class NhanVatModel extends Model
         }
         return gridPane;
 
-    }
-
-    private Label createWrappedLabel(String text) {
-        Label label = new Label();
-        label.setTextAlignment(TextAlignment.JUSTIFY);
-        label.setWrapText(true);
-
-        TextFlow textFlow = new TextFlow();
-        Text textNode = new Text(text);
-        textFlow.getChildren().add(textNode);
-        label.setGraphic(textFlow);
-
-        return label;
     }
 }
