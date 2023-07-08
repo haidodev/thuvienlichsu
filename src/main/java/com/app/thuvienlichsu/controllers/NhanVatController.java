@@ -2,9 +2,11 @@ package com.app.thuvienlichsu.controllers;
 
 import com.app.thuvienlichsu.base.Model;
 import com.app.thuvienlichsu.base.NhanVatModel;
+import com.app.thuvienlichsu.util.JavaFXGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -14,6 +16,7 @@ import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class NhanVatController extends GeneralController implements Initializable {
@@ -39,16 +42,16 @@ public class NhanVatController extends GeneralController implements Initializabl
 
     }
     @FXML
-    public void nhanVatSearchFieldAction() {
+    private void nhanVatSearchFieldAction() {
         searchFieldAction((ArrayList<Model>) database.getNhanVat());
     }
     @FXML
-    public void showNhanVatDetail() {
+    private void showNhanVatDetail() {
         NhanVatModel nhanVat = (NhanVatModel) getModelFromDatabase((ArrayList<Model>) database.getNhanVat());
         showNhanVatInformation(nhanVat);
         showDanhSachLienQuan(nhanVat);
     }
-    public void showNhanVatDetail(String nhanVatName) {
+    private void showNhanVatDetail(String nhanVatName) {
         NhanVatModel nhanVat = (NhanVatModel) getModelFromDatabase((ArrayList<Model>) database.getNhanVat(), nhanVatName);
         showNhanVatInformation(nhanVat);
         showDanhSachLienQuan(nhanVat);
@@ -68,19 +71,21 @@ public class NhanVatController extends GeneralController implements Initializabl
         if (description != null)
             tableContent.getChildren().add(description);
     }
-    private void showDanhSachLienQuan(NhanVatModel nhanVat){
+    private void showDanhSachLienQuan(NhanVatModel nhanVat) {
         resetDanhSachLienQuan();
 
         if (nhanVat == null) return;
 
-        if (nhanVat.getCacNhanVatLienQuan().size() > 0) nhanVatLienQuanLabel.setVisible(true);
-        cacNhanVatLienQuan.getChildren().addAll(GeneralController.nhanVatLienQuanButtons(nhanVat.getCacNhanVatLienQuan(), database.getNhanVat()));
+        List<Button> thoiKyBtns = JavaFXGenerator.thoiKyLienQuanButtons(nhanVat.getCacThoiKyLienQuan(), database.getThoiKy());
+        List<Button> nhanVatBtns = JavaFXGenerator.nhanVatLienQuanButtons(nhanVat.getCacNhanVatLienQuan(), database.getNhanVat());
+        List<Button> diTichBtns = JavaFXGenerator.diTichLienQuanButtons(nhanVat.getCacDiTichLienQuan(), database.getDiTich());
 
-        if (nhanVat.getCacDiTichLienQuan().size() > 0) diTichLienQuanLabel.setVisible(true);
-        cacDiTichLienQuan.getChildren().addAll(GeneralController.diTichLienQuanButtons(nhanVat.getCacDiTichLienQuan(), database.getDiTich()));
-
-        if (nhanVat.getCacThoiKyLienQuan().size() > 0) thoiKyLienQuanLabel.setVisible(true);
-        cacThoiKyLienQuan.getChildren().addAll(GeneralController.thoiKyLienQuanButtons(nhanVat.getCacThoiKyLienQuan(), database.getThoiKy()));
+        if (thoiKyBtns.size() > 0) thoiKyLienQuanLabel.setVisible(true);
+        cacThoiKyLienQuan.getChildren().addAll(thoiKyBtns);
+        if (nhanVatBtns.size() > 0) nhanVatLienQuanLabel.setVisible(true);
+        cacNhanVatLienQuan.getChildren().addAll(nhanVatBtns);
+        if (diTichBtns.size() > 0) diTichLienQuanLabel.setVisible(true);
+        cacDiTichLienQuan.getChildren().addAll(diTichBtns);
     }
     private void resetDanhSachLienQuan(){
         nhanVatLienQuanLabel.setVisible(false);

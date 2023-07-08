@@ -2,19 +2,23 @@ package com.app.thuvienlichsu.controllers;
 
 import com.app.thuvienlichsu.base.DiTichModel;
 import com.app.thuvienlichsu.base.Model;
-import com.app.thuvienlichsu.base.NhanVatModel;
+
+import com.app.thuvienlichsu.util.JavaFXGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.geometry.Insets;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -38,12 +42,12 @@ public class DiTichController extends GeneralController implements Initializable
         showDiTichDetail(diTichName);
     }
     @FXML
-    public void showDiTichDetail() {
+    private void showDiTichDetail() {
         DiTichModel item = (DiTichModel) getModelFromDatabase((ArrayList<Model>) database.getDiTich());
         showDiTichInformation(item);
         showDanhSachLienQuan(item);
     }
-    public void showDiTichDetail(String diTichName) {
+    private void showDiTichDetail(String diTichName) {
         DiTichModel item = (DiTichModel) getModelFromDatabase((ArrayList<Model>) database.getDiTich(), diTichName);
         showDiTichInformation(item);
         showDanhSachLienQuan(item);
@@ -59,19 +63,23 @@ public class DiTichController extends GeneralController implements Initializable
             tableContent.getChildren().add(description);
     }
     @FXML
-    public void diTichSearchFieldAction(){
+    private void diTichSearchFieldAction(){
         searchFieldAction((ArrayList<Model>) database.getDiTich());
     }
     @FXML
-    private void showDanhSachLienQuan(DiTichModel item){
+    private void showDanhSachLienQuan(DiTichModel diTich){
         resetDanhSachLienQuan();
-        if (item == null) return;
-        if (item.getCacThoiKyLienQuan().size() > 0) thoiKyLienQuanLabel.setVisible(true);
-        cacThoiKyLienQuan.getChildren().addAll(GeneralController.thoiKyLienQuanButtons(item.getCacThoiKyLienQuan(), database.getThoiKy()));
-        if (item.getCacNhanVatLienQuan().size() > 0) nhanVatLienQuanLabel.setVisible(true);
-        cacNhanVatLienQuan.getChildren().addAll(GeneralController.nhanVatLienQuanButtons(item.getCacNhanVatLienQuan(), database.getNhanVat()));
-        if (item.getCacLeHoiLienQuan().size() > 0) leHoiLienQuanLabel.setVisible(true);
-        cacLeHoiLienQuan.getChildren().addAll(GeneralController.leHoiLienQuanButtons(item.getCacLeHoiLienQuan(), database.getLeHoi()));
+        if (diTich == null) return;
+        List<Button> thoiKyBtns = JavaFXGenerator.thoiKyLienQuanButtons(diTich.getCacThoiKyLienQuan(), database.getThoiKy());
+        List<Button> nhanVatBtns = JavaFXGenerator.nhanVatLienQuanButtons(diTich.getCacNhanVatLienQuan(), database.getNhanVat());
+        List<Button> leHoiBtns = JavaFXGenerator.leHoiLienQuanButtons(diTich.getCacLeHoiLienQuan(), database.getLeHoi());
+
+        if (thoiKyBtns.size() > 0) thoiKyLienQuanLabel.setVisible(true);
+        cacThoiKyLienQuan.getChildren().addAll(thoiKyBtns);
+        if (nhanVatBtns.size() > 0) nhanVatLienQuanLabel.setVisible(true);
+        cacNhanVatLienQuan.getChildren().addAll(nhanVatBtns);
+        if (leHoiBtns.size() > 0) leHoiLienQuanLabel.setVisible(true);
+        cacLeHoiLienQuan.getChildren().addAll(leHoiBtns);
     }
     private void resetDanhSachLienQuan(){
         nhanVatLienQuanLabel.setVisible(false);

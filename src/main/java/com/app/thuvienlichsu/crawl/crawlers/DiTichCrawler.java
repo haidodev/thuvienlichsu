@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.app.thuvienlichsu.util.UrlDecode.getCodeFromUrl;
+import static com.app.thuvienlichsu.util.StringUtility.getCodeFromUrl;
 
 
 public class DiTichCrawler extends SCrawler implements ICrawler {

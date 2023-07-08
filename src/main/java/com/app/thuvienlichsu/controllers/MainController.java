@@ -11,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.stage.Stage;
@@ -144,8 +143,8 @@ public class MainController implements Initializable {
         diTichBtn.getStyleClass().removeAll("active");
         leHoiBtn.getStyleClass().removeAll("active");
     }
-
-    public void showThoiKyPane() {
+    @FXML
+    private void showThoiKyPane() {
         resetStyleNav();
         thoiKyBtn.getStyleClass().add("active");
         setMainContent(thoiKyPane);
@@ -155,7 +154,8 @@ public class MainController implements Initializable {
         showThoiKyPane();
         thoiKyController.preloadThoiKy(thoiKyName);
     }
-    public void showNhanVatPane() {
+    @FXML
+    private void showNhanVatPane() {
         resetStyleNav();
         nhanVatBtn.getStyleClass().add("active");
         setMainContent(nhanVatPane);
@@ -165,7 +165,8 @@ public class MainController implements Initializable {
         nhanVatController.preloadNhanVat(nhanVatName);
     }
 
-    public void showSuKienPane() {
+    @FXML
+    private void showSuKienPane() {
         resetStyleNav();
         suKienBtn.getStyleClass().add("active");
         setMainContent(suKienPane);
@@ -179,13 +180,15 @@ public class MainController implements Initializable {
         showDiTichPane();
         diTichController.preloadDiTich(diTichName);
     }
-    public void showDiTichPane() {
+    @FXML
+    private void showDiTichPane() {
         resetStyleNav();
         diTichBtn.getStyleClass().add("active");
         setMainContent(diTichPane);
     }
 
-    public void showLeHoiPane() {
+    @FXML
+    private void showLeHoiPane() {
         resetStyleNav();
         leHoiBtn.getStyleClass().add("active");
         setMainContent(leHoiPane);

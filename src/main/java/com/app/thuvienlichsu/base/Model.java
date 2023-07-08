@@ -1,7 +1,6 @@
 package com.app.thuvienlichsu.base;
 
 import com.app.thuvienlichsu.util.Config;
-import com.app.thuvienlichsu.util.Encode;
 import com.app.thuvienlichsu.util.StringUtility;
 import javafx.geometry.Insets;
 import javafx.scene.text.Text;

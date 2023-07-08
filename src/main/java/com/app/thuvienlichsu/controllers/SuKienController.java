@@ -3,9 +3,11 @@ package com.app.thuvienlichsu.controllers;
 import com.app.thuvienlichsu.base.Model;
 import com.app.thuvienlichsu.base.NhanVatModel;
 import com.app.thuvienlichsu.base.SuKienModel;
+import com.app.thuvienlichsu.util.JavaFXGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -15,6 +17,7 @@ import javafx.scene.text.TextFlow;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SuKienController extends GeneralController implements Initializable {
@@ -35,12 +38,12 @@ public class SuKienController extends GeneralController implements Initializable
         showSuKienDetail(suKienName);
     }
     @FXML
-    public void showSuKienDetail() {
+    private void showSuKienDetail() {
         SuKienModel item = (SuKienModel) getModelFromDatabase((ArrayList<Model>) database.getSuKien());
         showSuKienInformation(item);
         showDanhSachLienQuan(item);
     }
-    public void showSuKienDetail(String suKienName) {
+    private void showSuKienDetail(String suKienName) {
         SuKienModel item = (SuKienModel) getModelFromDatabase((ArrayList<Model>) database.getSuKien(), suKienName);
         showSuKienInformation(item);
         showDanhSachLienQuan(item);
@@ -54,17 +57,20 @@ public class SuKienController extends GeneralController implements Initializable
         tableContent.getChildren().add(suKien.getInfoTable());
     }
     @FXML
-    public void suKienSearchFieldAction(){
+    private void suKienSearchFieldAction(){
         searchFieldAction((ArrayList<Model>) database.getSuKien());
     }
     private void showDanhSachLienQuan(SuKienModel suKien){
         resetDanhSachLienQuan();
         if (suKien == null) return;
-        if (suKien.getCacNhanVatLienQuan().size() > 0) nhanVatLienQuanLabel.setVisible(true);
-        cacNhanVatLienQuan.getChildren().addAll(GeneralController.nhanVatLienQuanButtons(suKien.getCacNhanVatLienQuan(), database.getNhanVat()));
 
-        if (suKien.getCacDiTichLienQuan().size() > 0) diTichLienQuanLabel.setVisible(true);
-        cacDiTichLienQuan.getChildren().addAll(GeneralController.diTichLienQuanButtons(suKien.getCacDiTichLienQuan(), database.getDiTich()));
+        List<Button> nhanVatBtns = JavaFXGenerator.nhanVatLienQuanButtons(suKien.getCacNhanVatLienQuan(), database.getNhanVat());
+        List<Button> diTichBtns = JavaFXGenerator.diTichLienQuanButtons(suKien.getCacDiTichLienQuan(), database.getDiTich());
+
+        if (nhanVatBtns.size() > 0) nhanVatLienQuanLabel.setVisible(true);
+        cacNhanVatLienQuan.getChildren().addAll(nhanVatBtns);
+        if (diTichBtns.size() > 0) diTichLienQuanLabel.setVisible(true);
+        cacDiTichLienQuan.getChildren().addAll(diTichBtns);
     }
     private void resetDanhSachLienQuan(){
         nhanVatLienQuanLabel.setVisible(false);

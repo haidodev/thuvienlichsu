@@ -78,15 +78,15 @@ public class LeHoiModel extends Model
         // Apply column constraints to the GridPane
         gridPane.getColumnConstraints().addAll(column1, column2);
         gridPane.add(createWrappedLabel("Thời gian"), 0, 0);
-        if (this.thoiGian.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 0);
+        if (this.thoiGian.equals("")) gridPane.add(createWrappedLabel(Config.nullRepresentation), 1, 0);
         else gridPane.add(createWrappedLabel(this.thoiGian), 1, 0);
 
         gridPane.add(createWrappedLabel("Địa điểm"), 0, 1);
-        if (this.diaDiem.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 1);
+        if (this.diaDiem.equals("")) gridPane.add(createWrappedLabel(Config.nullRepresentation), 1, 1);
         else gridPane.add(createWrappedLabel(this.diaDiem), 1, 1);
 
         gridPane.add(createWrappedLabel("Tổ chức lần đầu"), 0, 2);
-        if (this.toChucLanDau.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 2);
+        if (this.toChucLanDau.equals("")) gridPane.add(createWrappedLabel(Config.nullRepresentation), 1, 2);
         else gridPane.add(createWrappedLabel(this.toChucLanDau), 1, 2);
 
         return gridPane;

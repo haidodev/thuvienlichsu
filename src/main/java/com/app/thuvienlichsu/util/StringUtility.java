@@ -34,4 +34,9 @@ public class StringUtility {
         }
         return 0;
     }
+
+    public static String getCodeFromUrl(String url) {
+        String[] cs = url.split("/");
+        return cs[cs.length - 1];
+    }
 }
