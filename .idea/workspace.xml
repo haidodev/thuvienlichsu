@@ -6,16 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5495f9b4-d542-479d-821c-89fc7295bfa4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/.temp/nhanVat.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/.temp/nhanVat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/nhanVat.json" beforeDir="false" afterPath="$PROJECT_DIR$/database/nhanVat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/LeHoiModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/LeHoiModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/NhanVatModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/base/NhanVatModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/NhanVatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/NhanVatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/ThoiKyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/controllers/ThoiKyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/crawl/crawlers/NhanVatCrawler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/crawl/crawlers/NhanVatCrawler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/crawl/linkers/LeHoiToDiTich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/app/thuvienlichsu/crawl/linkers/LeHoiToDiTich.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/nhan-vat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/app/thuvienlichsu/nhan-vat.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/haidohong/Programming/java/ThuVienLichSu/src/main/resources/com/app/thuvienlichsu"
   }
 }]]></component>
