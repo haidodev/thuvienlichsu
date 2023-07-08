@@ -51,7 +51,7 @@ public class DiTichController extends GeneralController implements Initializable
     private void showDiTichInformation(DiTichModel diTich){
         tableContent.getChildren().clear();
         Label label = new Label(diTich.getTenModel());
-        label.setPadding(new Insets(0, 0, 0, 10));
+        label.setPadding(new Insets(0, 0, 10, 10));
         label.setFont(new Font(20));
         tableContent.getChildren().add(label);
         TextFlow description = diTich.getDescription();
