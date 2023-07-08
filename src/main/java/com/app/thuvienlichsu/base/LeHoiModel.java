@@ -1,6 +1,13 @@
 package com.app.thuvienlichsu.base;
 
 import com.app.thuvienlichsu.util.Config;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextFlow;
 
 import java.util.List;
 import java.util.Set;
@@ -127,6 +134,50 @@ public class LeHoiModel extends Model
         htmlBuilder.append("</html>");
 
         return htmlBuilder.toString();
+    }
+    public GridPane getInfoTable(){
+        GridPane gridPane = new GridPane();
+        gridPane.setPadding(new Insets(10));
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        // Create column constraints
+        ColumnConstraints column1 = new ColumnConstraints();
+        column1.setPrefWidth(80);
+
+        ColumnConstraints column2 = new ColumnConstraints();
+        column2.setPrefWidth(320);
+
+
+
+        // Apply column constraints to the GridPane
+        gridPane.getColumnConstraints().addAll(column1, column2);
+        gridPane.add(createWrappedLabel("Thời gian"), 0, 0);
+        if (this.thoiGian.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 0);
+        else gridPane.add(createWrappedLabel(this.thoiGian), 1, 0);
+
+        gridPane.add(createWrappedLabel("Địa điểm"), 0, 1);
+        if (this.diaDiem.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 1);
+        else gridPane.add(createWrappedLabel(this.diaDiem), 1, 1);
+
+        gridPane.add(createWrappedLabel("Kết quả"), 0, 2);
+        if (this.toChucLanDau.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 2);
+        else gridPane.add(createWrappedLabel(this.toChucLanDau), 1, 2);
+
+        return gridPane;
+
+    }
+
+    private Label createWrappedLabel(String text) {
+        Label label = new Label();
+        label.setTextAlignment(TextAlignment.JUSTIFY);
+        label.setWrapText(true);
+
+        TextFlow textFlow = new TextFlow();
+        Text textNode = new Text(text);
+        textFlow.getChildren().add(textNode);
+        label.setGraphic(textFlow);
+
+        return label;
     }
     @Override
     public String toString()

@@ -36,7 +36,7 @@ public class LeHoiToDiTich
         return hashMap;
     }
 
-    public void LinkLeHoiToDiTich()
+    public Map<String, Set<String>> LinkLeHoiToDiTich()
     {
         Map<String, Set<String>> hashMap = generateHashMap();
 //        System.out.println(hashMap);
@@ -53,7 +53,7 @@ public class LeHoiToDiTich
 //                System.out.println(hashMap.get(leHoi.getCode()));
 //            }
             hashMap.forEach((key, value) -> {
-                if (key.contains(leHoi.getCode()) || leHoi.getCode().contains(key))
+                if (leHoi.getCode().equalsIgnoreCase(key))
                 {
                     leHoi.setDiTichLienQuan(value);
 //                    System.out.println(key + value);
@@ -65,6 +65,8 @@ public class LeHoiToDiTich
         List<Model> models = new ArrayList<>();
         models.addAll(leHoiList);
         leHoiCrawler.writeJson(Config.TEMP_LE_HOI_FILENAME, models);
+
+        return hashMap;
     }
 
     public static void main(String[] args)

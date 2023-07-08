@@ -54,11 +54,6 @@ public class DiTichController extends GeneralController implements Initializable
         label.setPadding(new Insets(0, 0, 0, 10));
         label.setFont(new Font(20));
         tableContent.getChildren().add(label);
-        GridPane infoTable = diTich.getInfoTable();
-        if (infoTable != null) {
-            tableContent.getChildren().add(infoTable);
-        }
-
         TextFlow description = diTich.getDescription();
         if (description != null)
             tableContent.getChildren().add(description);
@@ -75,8 +70,8 @@ public class DiTichController extends GeneralController implements Initializable
         cacThoiKyLienQuan.getChildren().addAll(GeneralController.thoiKyLienQuanButtons(item.getCacThoiKyLienQuan(), database.getThoiKy()));
         if (item.getCacNhanVatLienQuan().size() > 0) nhanVatLienQuanLabel.setVisible(true);
         cacNhanVatLienQuan.getChildren().addAll(GeneralController.nhanVatLienQuanButtons(item.getCacNhanVatLienQuan(), database.getNhanVat()));
-//        if (item.getCacLeHoiLienQuan().size() > 0) leHoiLienQuanLabel.setVisible(true);
-//        cacLeHoiLienQuan.getChildren().addAll(GeneralController.leHoiLienQuanButtons((Set<String>) item.getCacLeHoiLienQuan(), database.getLeHoi()));
+        if (item.getCacLeHoiLienQuan().size() > 0) leHoiLienQuanLabel.setVisible(true);
+        cacLeHoiLienQuan.getChildren().addAll(GeneralController.leHoiLienQuanButtons(item.getCacLeHoiLienQuan(), database.getLeHoi()));
     }
     private void resetDanhSachLienQuan(){
         nhanVatLienQuanLabel.setVisible(false);
