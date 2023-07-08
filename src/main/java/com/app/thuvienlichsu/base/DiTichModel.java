@@ -48,13 +48,4 @@ public class DiTichModel extends Model{
     public void setCacLeHoiLienQuan(Set<String> cacLeHoiLienQuan) {
         this.cacLeHoiLienQuan = cacLeHoiLienQuan;
     }
-
-    @Override
-    public String toString() {
-        return  "\n{ \"Id\":\"" + this.id + "\", "
-                + "\n\"Địa danh\":\"" + this.tenModel + "\", "
-                + "\n\"Code\":\"" + this.code + "\", "
-                + "\n\"Miêu tả\":\"" + this.moTa + "\", "
-                + "\n\"Nhân vật liên quan code\":\"" + this.cacNhanVatLienQuan + "\" }" + "\n";
-    }
 }

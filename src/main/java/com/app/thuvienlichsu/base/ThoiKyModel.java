@@ -42,10 +42,4 @@ public class ThoiKyModel extends Model
     public Set<String> getCacDiTichLienQuan() {
         return cacDiTichLienQuan;
     }
-    @Override
-    public String toString() {
-        return "\n{ \"tenModel\":\"" + this.tenModel + "\", "
-                + "\n\"moTa\":\"" + this.moTa + "\", "
-                + "\n\"cacNhanVatLienQuan\":\"" + this.cacNhanVatLienQuan + "\" }" + "\n";
-    }
 }

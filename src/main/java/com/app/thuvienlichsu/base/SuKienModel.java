@@ -86,14 +86,4 @@ public class SuKienModel extends Model {
         return gridPane;
 
     }
-    @Override
-    public String toString() {
-        return  "\n{ \"id\":\"" + this.id + "\", "
-                + "\n\"tenModel\":\"" + this.tenModel + "\", "
-                + "\n\"thoiGian\":\"" + this.thoiGian + "\", "
-                + "\n\"diaDiem\":\"" + this.diaDiem + "\", "
-                + "\n\"ketQuan\":\"" + this.ketQua + "\", "
-                + "\n\"cacNhanVatLienQuan\":\"" + this.cacNhanVatLienQuan + "\", "
-                + "\n\"cacDiTichLienQuan\":\"" + this.cacDiTichLienQuan + "\" }" + "\n";
-    }
 }
