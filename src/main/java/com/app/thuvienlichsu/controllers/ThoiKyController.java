@@ -50,7 +50,7 @@ public class ThoiKyController extends GeneralController implements Initializable
     private void showThoiKyInformation(ThoiKyModel thoiKy){
         tableContent.getChildren().clear();
         Label label = new Label(thoiKy.getTenModel());
-        label.setPadding(new Insets(0, 0, 0, 10));
+        label.setPadding(new Insets(0, 0, 10, 10));
         label.setFont(new Font(20));
         tableContent.getChildren().add(label);
         GridPane infoTable = thoiKy.getInfoTable();

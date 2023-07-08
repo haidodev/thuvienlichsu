@@ -159,7 +159,7 @@ public class LeHoiModel extends Model
         if (this.diaDiem.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 1);
         else gridPane.add(createWrappedLabel(this.diaDiem), 1, 1);
 
-        gridPane.add(createWrappedLabel("Kết quả"), 0, 2);
+        gridPane.add(createWrappedLabel("Tổ chức lần đầu"), 0, 2);
         if (this.toChucLanDau.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 2);
         else gridPane.add(createWrappedLabel(this.toChucLanDau), 1, 2);
 
