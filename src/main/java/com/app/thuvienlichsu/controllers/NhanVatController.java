@@ -66,7 +66,6 @@ public class NhanVatController extends GeneralController implements Initializabl
         TextFlow description = nhanVat.getDescription();
         if (description != null)
             tableContent.getChildren().add(description);
-
     }
     private void showDanhSachLienQuan(NhanVatModel nhanVat){
         resetDanhSachLienQuan();
