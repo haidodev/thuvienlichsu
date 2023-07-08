@@ -50,40 +50,15 @@ public class SuKienController extends GeneralController implements Initializable
         label.setPadding(new Insets(0, 0, 0, 10));
         label.setFont(new Font(20));
         tableContent.getChildren().add(label);
-        GridPane infoTable = suKien.getInfoTable();
-        if (infoTable != null) {
-            tableContent.getChildren().add(infoTable);
-        }
-
-        TextFlow description = suKien.getDescription();
-        if (description != null)
-            tableContent.getChildren().add(description);
+        tableContent.getChildren().add(suKien.getInfoTable());
     }
     @FXML
     public void suKienSearchFieldAction(){
         searchFieldAction((ArrayList<Model>) database.getSuKien());
     }
     private void showDanhSachLienQuan(SuKienModel suKien){
-//        nhanVatLienQuanLabel.setVisible(true);
-//        diTichLienQuanLabel.setVisible(true);
-//
-//        cacNhanVatLienQuan.getChildren().clear();
-//        cacDiTichLienQuan.getChildren().clear();
-//        if (item == null) return;
-//        if (item.getCacNhanVatLienQuan().size() > 0) nhanVatLienQuanLabel.setVisible(true);
-//        cacNhanVatLienQuan.getChildren().addAll(GeneralController.nhanVatLienQuanButtons(item.getCacNhanVatLienQuan(), database.getNhanVat()));
-//        for (String diTich : item.getcacDiTichLienQuan()) {
-//            List<Model> dtL = database.getDiTich();
-//            int idx = database.binaryLookupByCode(0, dtL.size() - 1, diTich, (ArrayList<Model>) dtL);
-//            if (idx < 0) continue;
-//            Button btn = new Button(dtL.get(idx).getTenModel());
-//            btn.setOnAction(this::handleDiTichLienQuanButton);
-//            cacDiTichLienQuan.getChildren().add(btn);
-//        }
         resetDanhSachLienQuan();
-
         if (suKien == null) return;
-
         if (suKien.getCacNhanVatLienQuan().size() > 0) nhanVatLienQuanLabel.setVisible(true);
         cacNhanVatLienQuan.getChildren().addAll(GeneralController.nhanVatLienQuanButtons(suKien.getCacNhanVatLienQuan(), database.getNhanVat()));
 

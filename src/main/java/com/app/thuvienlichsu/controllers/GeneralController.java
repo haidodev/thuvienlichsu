@@ -100,6 +100,8 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, nvL.size() - 1, nhanVat, (ArrayList<Model>) nvL);
             if (idx < 0) continue;
             Button btn = new Button(nvL.get(idx).getTenModel());
+            btn.setPrefWidth(150); // Set button width
+            btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkNhanVatPane(((Button) event.getSource()).getText());
             });
@@ -113,6 +115,8 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, tkL.size() - 1, thoiKy, (ArrayList<Model>) tkL);
             if (idx < 0) continue;
             Button btn = new Button(tkL.get(idx).getTenModel());
+            btn.setPrefWidth(150); // Set button width
+            btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkThoiKyPane(((Button) event.getSource()).getText());
             });
@@ -126,6 +130,8 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, skL.size() - 1, suKien, (ArrayList<Model>) skL);
             if (idx < 0) continue;
             Button btn = new Button(skL.get(idx).getTenModel());
+            btn.setPrefWidth(150); // Set button width
+            btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkNhanVatPane(((Button) event.getSource()).getText());
             });
@@ -139,6 +145,8 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, dtL.size() - 1, diTich, (ArrayList<Model>) dtL);
             if (idx < 0) continue;
             Button btn = new Button(dtL.get(idx).getTenModel());
+            btn.setPrefWidth(150); // Set button width
+            btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkDiTichPane(((Button) event.getSource()).getText());
             });
@@ -152,6 +160,8 @@ public class GeneralController implements Initializable {
             int idx = LoadData.binaryLookupByCode(0, lhL.size() - 1, leHoi, (ArrayList<Model>) lhL);
             if (idx < 0) continue;
             Button btn = new Button(lhL.get(idx).getTenModel());
+            btn.setPrefWidth(150); // Set button width
+            btn.setPrefHeight(30);
             btn.setOnAction(event -> {
                 MainController.getInstance().linkLeHoiPane(((Button) event.getSource()).getText());
             });

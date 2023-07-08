@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -19,8 +20,8 @@ import java.util.ResourceBundle;
 
 
 public class ThoiKyController extends GeneralController implements Initializable {
-    public VBox cacNhanVatLienQuan;
-    public VBox cacDiTichLienQuan;
+    public FlowPane cacNhanVatLienQuan;
+    public FlowPane cacDiTichLienQuan;
     public Label nhanVatLienQuanLabel;
     public Label diTichLienQuanLabel;
     public VBox tableContent;

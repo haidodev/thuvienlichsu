@@ -18,9 +18,6 @@ public class SuKienModel extends Model {
     private List<List<String>> thongTin;
     private Set<String> cacNhanVatLienQuan;
     private Set<String> cacDiTichLienQuan;
-    public List<List<String>> getThongTin() {
-        return thongTin;
-    }
     public Set<String> getCacNhanVatLienQuan() {
         return this.cacNhanVatLienQuan;
     }
@@ -37,15 +34,18 @@ public class SuKienModel extends Model {
     }
 
     public void setThoiGian(String thoiGian) {
-        this.thoiGian = thoiGian;
+        if (thoiGian.equals("")) this.thoiGian = "Không rõ";
+        else this.thoiGian = thoiGian;
     }
 
     public void setDiaDiem(String diaDiem) {
-        this.diaDiem = diaDiem;
+        if (diaDiem.equals("")) this.diaDiem = "Không rõ";
+        else this.diaDiem = diaDiem;
     }
 
     public void setKetQua(String ketQua) {
-        this.ketQua = ketQua;
+        if (ketQua.equals("")) this.ketQua = "Không rõ";
+        else this.ketQua = ketQua;
     }
     public void setThongTin(List<List<String>> thongTin) {
         this.thongTin = thongTin;
@@ -76,55 +76,16 @@ public class SuKienModel extends Model {
         htmlBuilder.append("table { font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:14px; }");
         htmlBuilder.append(".table-container { text-align: left; }");
         htmlBuilder.append("</style>");
-
-
-
-        // Add the name as a heading
-        // htmlBuilder.append("<h1>").append("NHÂN VẬT").append("</h1>");
-        // htmlBuilder.append("<h1>").append(getName()).append("</h1>");
-
-        // Add the code
-        // htmlBuilder.append("<p><strong>Code:</strong> ").append(getCode()).append("</p>");
-
-
-        // Add the description
         htmlBuilder.append("<h2>Mô tả</h2>");
         htmlBuilder.append("<p>").append(this.thoiGian).append("</p>");
         htmlBuilder.append("<p>").append(this.diaDiem).append("</p>");
         htmlBuilder.append("<p>").append(this.ketQua).append("</p>");
-
-
-//        // Add the related figures
-//        htmlBuilder.append("<h2>Related Figures</h2>");
-//        if (this.cacNhanVatLienQuan != null) {
-//            htmlBuilder.append("<ul>");
-//            for (String figure : this.cacNhanVatLienQuan) {
-//                htmlBuilder.append("<li>").append(figure).append("</li>");
-//            }
-//            htmlBuilder.append("</ul>");
-//        }
-//
-//
-//        // Add the related places
-//        htmlBuilder.append("<h2>Related Places</h2>");
-//        if (this.cacDiTichLienQuan != null) {
-//            htmlBuilder.append("<ul>");
-//            for (String place : this.cacDiTichLienQuan) {
-//                htmlBuilder.append("<li>").append(place).append("</li>");
-//            }
-//            htmlBuilder.append("</ul>");
-//        }
-
-
-        // Close the HTML structure
         htmlBuilder.append("</body>");
         htmlBuilder.append("</html>");
 
         return htmlBuilder.toString();
     }
     public GridPane getInfoTable(){
-
-        if (this.thongTin == null) return null;
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10));
         gridPane.setHgap(20);
@@ -134,32 +95,24 @@ public class SuKienModel extends Model {
         column1.setPrefWidth(80);
 
         ColumnConstraints column2 = new ColumnConstraints();
-        column2.setPrefWidth(160);
+        column2.setPrefWidth(320);
 
-
-        ColumnConstraints column3 = new ColumnConstraints();
-        column3.setPrefWidth(160);
 
 
         // Apply column constraints to the GridPane
-        gridPane.getColumnConstraints().addAll(column1, column2, column3);
-        int rowCnt = 0;
-        for (List<String> row : thongTin){
-            Label fieldName = null, sourceNKS = null, sourceWiki = null;
-            if (row.size() >= 1) {
-                fieldName = createWrappedLabel(row.get(0));
-            }
-            if (row.size() >= 2)
-                sourceNKS = createWrappedLabel(row.get(1));
-            if (row.size() >= 3)
-                sourceWiki = createWrappedLabel(row.get(2));
-            if (row.size() == 1) GridPane.setColumnSpan(fieldName, 3);
-            if (row.size() == 2) GridPane.setColumnSpan(sourceNKS, 2);
-            if (fieldName != null) gridPane.add(fieldName, 0, rowCnt);
-            if (sourceNKS != null) gridPane.add(sourceNKS, 1, rowCnt);
-            if (sourceWiki != null) gridPane.add(sourceWiki, 2, rowCnt);
-            rowCnt += 1;
-        }
+        gridPane.getColumnConstraints().addAll(column1, column2);
+        gridPane.add(createWrappedLabel("Thời gian"), 0, 0);
+        if (this.thoiGian.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 0);
+        else gridPane.add(createWrappedLabel(this.thoiGian), 1, 0);
+
+        gridPane.add(createWrappedLabel("Địa điểm"), 0, 1);
+        if (this.diaDiem.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 1);
+        else gridPane.add(createWrappedLabel(this.diaDiem), 1, 1);
+
+        gridPane.add(createWrappedLabel("Kết quả"), 0, 2);
+        if (this.ketQua.equals("")) gridPane.add(createWrappedLabel("Không rõ"), 1, 2);
+        else gridPane.add(createWrappedLabel(this.ketQua), 1, 2);
+
         return gridPane;
 
     }
