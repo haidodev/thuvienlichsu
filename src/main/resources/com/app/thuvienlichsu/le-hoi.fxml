@@ -74,44 +74,19 @@
 
             </VBox>
 
-<!--            <Label fx:id="nhanVatLienQuanLabel" text="Nhân vật liên quan" visible="false">-->
-<!--                <padding>-->
-<!--                    <Insets bottom="5.0" left="10.0" right="5.0" top="15.0" />-->
-<!--                </padding>-->
-<!--                <font>-->
-<!--                    <Font name="System Bold" size="15.0" />-->
-<!--                </font></Label>-->
-<!--            <FlowPane fx:id="cacNhanVatLienQuan">-->
-<!--                <padding>-->
-<!--                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />-->
-<!--                </padding>-->
-<!--            </FlowPane>-->
+            <Label fx:id="diTichLienQuanLabel" text="Di tích liên quan" visible="false">
+                <padding>
+                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                </padding>
+                <font>
+                    <Font name="System Bold" size="15.0" />
+                </font></Label>
+            <FlowPane fx:id="cacDiTichLienQuan">
+                <padding>
+                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                </padding>
+            </FlowPane>
 
-<!--            <Label fx:id="diTichLienQuanLabel" text="Di tích liên quan" visible="false">-->
-<!--                <padding>-->
-<!--                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />-->
-<!--                </padding>-->
-<!--                <font>-->
-<!--                    <Font name="System Bold" size="15.0" />-->
-<!--                </font></Label>-->
-<!--            <FlowPane fx:id="cacDiTichLienQuan">-->
-<!--                <padding>-->
-<!--                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />-->
-<!--                </padding>-->
-<!--            </FlowPane>-->
-
-<!--            <Label fx:id="thoiKyLienQuanLabel" text="Thời kỳ liên quan" visible="false">-->
-<!--                <padding>-->
-<!--                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />-->
-<!--                </padding>-->
-<!--                <font>-->
-<!--                    <Font name="System Bold" size="15.0" />-->
-<!--                </font></Label>-->
-<!--            <FlowPane fx:id="cacThoiKyLienQuan">-->
-<!--                <padding>-->
-<!--                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />-->
-<!--                </padding>-->
-<!--            </FlowPane>-->
         </VBox>
     </ScrollPane>
 </AnchorPane>

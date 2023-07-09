@@ -58,6 +58,9 @@ public class LeHoiModel extends Model
     {
         this.diaDanhCode = diaDanhCode;
     }
+    public Set<String> getCacDiTichLienQuan() {
+        return diTichLienQuan;
+    }
     public String getDiaDanhCode() {
         return diaDanhCode;
     }
