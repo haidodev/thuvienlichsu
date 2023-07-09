@@ -82,6 +82,7 @@ public class JavaFXGenerator {
         return allBtns;
     }
     public static List<Button> diTichLienQuanButtons(Set<String> diTichCodes, List<Model> dtL){
+        if (diTichCodes == null) return new ArrayList<>();;
         List<Button> allBtns = new ArrayList<>();
         for (String diTich : diTichCodes) {
             int idx = LoadData.binaryLookupByCode(0, dtL.size() - 1, diTich, (ArrayList<Model>) dtL);
